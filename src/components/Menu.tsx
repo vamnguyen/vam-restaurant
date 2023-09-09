@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import CartIcon from "./CartIcon";
+import { useSession } from "next-auth/react";
 
 const links = [
   { id: 1, title: "Homepage", url: "/" },
@@ -16,7 +17,7 @@ const Menu = () => {
   const [open, setOpen] = useState(false);
 
   // TEMPORARY
-  const user = false;
+  const { status } = useSession();
 
   return (
     <div>
@@ -37,10 +38,10 @@ const Menu = () => {
           ))}
 
           <Link
-            href={user ? "/orders" : "/login"}
+            href={status === "authenticated" ? "/orders" : "/login"}
             onClick={() => setOpen(false)}
           >
-            {user ? "Orders" : "Login"}
+            {status === "authenticated" ? "Orders" : "Login"}
           </Link>
 
           <Link href="/cart" onClick={() => setOpen(false)}>
