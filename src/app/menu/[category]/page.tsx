@@ -12,7 +12,7 @@ const getData = async (category: string) => {
   );
 
   if (!res.ok) {
-    throw new Error("Failed!");
+    throw new Error("Fetch data specific category products failed :( !!!");
   }
 
   return res.json();

@@ -8,7 +8,7 @@ const getData = async () => {
   });
 
   if (!res.ok) {
-    throw new Error("Failed!");
+    throw new Error("Fetch Categories data failed :( !!!");
   }
 
   return res.json();
