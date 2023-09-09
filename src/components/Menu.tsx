@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import CartIcon from "./CartIcon";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const links = [
   { id: 1, title: "Homepage", url: "/" },
@@ -43,6 +43,12 @@ const Menu = () => {
           >
             {status === "authenticated" ? "Orders" : "Login"}
           </Link>
+
+          {status === "authenticated" && (
+            <span className="cursor-pointer" onClick={() => signOut()}>
+              Logout
+            </span>
+          )}
 
           <Link href="/cart" onClick={() => setOpen(false)}>
             <CartIcon />
