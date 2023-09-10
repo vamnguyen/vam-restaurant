@@ -47,6 +47,7 @@ model User {
   isAdmin       Boolean @default(false)
   accounts      Account[]
   sessions      Session[]
+  Order         Order[]
 }
 
 model VerificationToken {
@@ -59,34 +60,36 @@ model VerificationToken {
 
 
 model Category {
-  id String @id @default(cuid())
-  createdAt DateTime @default(now())
-  title String
-  desc String
-  color String
-  img String
-  slug String @unique
-  products Product[]
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now())
+  title       String
+  desc        String
+  color       String
+  img         String
+  slug        String @unique
+  products    Product[]
 }
 
 model Product {
-  id String @id @default(cuid())
-  createdAt DateTime @default(now())
-  title String
-  desc String
-  img String?
-  price Decimal
-  isFeatured Boolean @default(false)
-  options Json[]
-  category Category @relation(fields: [catSlug], references: [slug])
-  catSlug String
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now())
+  title       String
+  desc        String
+  img         String?
+  price       Decimal
+  isFeatured  Boolean @default(false)
+  options     Json[]
+  category    Category @relation(fields: [catSlug], references: [slug])
+  catSlug     String
 }
 
 model Order {
-  id String @id @default(cuid())
-  createdAt DateTime @default(now())
-  price Decimal
-  products Json[]
-  status String
-  intent_id String? @unique
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now())
+  price       Decimal
+  products    Json[]
+  status      String
+  intent_id   String? @unique
+  user        User   @relation(fields: [userEmail], references: [email])
+  userEmail   String
 }
