@@ -27,10 +27,10 @@ const CartPage = () => {
             </div>
             <h2 className="font-bold">${item.price}</h2>
             <span
-              className="cursor-pointer font-bold text-sm bg-red-500 text-white px-2 rounded-[100%]"
+              className="cursor-pointer font-bold bg-red-500 text-white p-2 rounded-[100%]"
               onClick={() => removeFromCart(item)}
             >
-              X
+              <Image src="/delete.png" alt="" width={15} height={15} />
             </span>
           </div>
         ))}

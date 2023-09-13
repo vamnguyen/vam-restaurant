@@ -69,7 +69,7 @@ const OrdersPage = () => {
             <th className="hidden md:block">Order ID</th>
             <th>Date</th>
             <th>Price</th>
-            <th className="hidden md:block">Products</th>
+            <th className=" md:block">Products</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -86,9 +86,7 @@ const OrdersPage = () => {
                 {item.createdAt.toString().slice(0, 10)}
               </td>
               <td className="py-6 px-1">{item.price}</td>
-              <td className="hidden md:block py-6 px-1">
-                {item.products[0].title}
-              </td>
+              <td className=" md:block py-6 px-1">{item.products[0].title}</td>
               {session?.user.isAdmin ? (
                 <td>
                   <form
