@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 
 const OrdersPage = () => {
   // check user authenticate login
@@ -86,7 +87,16 @@ const OrdersPage = () => {
                 {item.createdAt.toString().slice(0, 10)}
               </td>
               <td className="py-6 px-1">{item.price}</td>
-              <td className=" md:block py-6 px-1">{item.products[0].title}</td>
+              <td className=" md:block py-6 px-1">
+                <div className="">
+                  {item.products.map((product) => (
+                    <span key={uuidv4()}>
+                      {product.title}
+                      {",  "}
+                    </span>
+                  ))}
+                </div>
+              </td>
               {session?.user.isAdmin ? (
                 <td>
                   <form
