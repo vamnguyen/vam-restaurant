@@ -16,9 +16,12 @@ const Price = ({ product }: { product: ProductType }) => {
   }, []);
 
   useEffect(() => {
+    console.log(product.price);
     if (product.options?.length) {
       setTotal(
-        quantity * product.price + product.options[selected]?.additionalPrice
+        quantity *
+          (parseInt(product.price as unknown as string) +
+            product.options[selected]?.additionalPrice)
       );
     }
   }, [product, quantity, selected]);

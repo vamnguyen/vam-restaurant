@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { uploadFile } from "@uploadcare/upload-client";
 
 type Inputs = {
   title: string;
@@ -66,56 +67,68 @@ const AddProductPage = () => {
     setFile(item);
   };
 
-  const upload = async () => {
-    const data = new FormData();
-    data.append("file", file!);
-    data.append("upload_preset", "restaurant");
+  // const upload = async () => {
+  //   const data = new FormData();
+  //   data.append("file", file!);
+  //   data.append("upload_preset", "restaurant");
 
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/vamnguyen/image/upload",
-      {
-        method: "POST",
-        headers: { "Content-Type": "multipart/form-data" },
-        body: data,
-      }
-    );
-    console.log("CHECK RESPONSE FROM CLOUDINARY ~ upload ~ res:", res);
+  //   const res = await fetch(
+  //     "https://api.cloudinary.com/v1_1/vamnguyen/image/upload",
+  //     {
+  //       method: "POST",
+  //       headers: { "Content-Type": "multipart/form-data" },
+  //       body: data,
+  //     }
+  //   );
+  //   console.log("CHECK RESPONSE FROM CLOUDINARY ~ upload ~ res:", res);
 
-    if (!res.ok) {
-      console.error(
-        `Request store image to Cloudinary failed with status ${res.status}`
-      );
-      // Handle the error appropriately
-    } else {
-      const contentType = res.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        const resData = await res.json();
-        return resData.url;
-      } else {
-        console.error("Response is not in JSON format");
-        // Handle non-JSON response
-      }
-    }
+  //   if (!res.ok) {
+  //     console.error(
+  //       `Request store image to Cloudinary failed with status ${res.status}`
+  //     );
+  //     // Handle the error appropriately
+  //   } else {
+  //     const contentType = res.headers.get("content-type");
+  //     if (contentType && contentType.includes("application/json")) {
+  //       const resData = await res.json();
+  //       return resData.url;
+  //     } else {
+  //       console.error("Response is not in JSON format");
+  //       // Handle non-JSON response
+  //     }
+  //   }
 
-    // const resData = await res.json();
-    // return resData.url;
-  };
+  //   // const resData = await res.json();
+  //   // return resData.url;
+  // };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      // get the image url  uploaded on cloudinary
-      const url = await upload();
-
-      const res = await fetch("http://localhost:3000/api/products", {
-        method: "POST",
-        body: JSON.stringify({
-          img: url,
-          ...inputs,
-          options,
-        }),
+      // // get the image url  uploaded on cloudinary
+      // const url = await upload();
+      const result = await uploadFile(file!, {
+        publicKey: "376b05d734140722ee84",
+        store: "auto",
+        metadata: {
+          subsystem: "uploader",
+          pet: "product",
+        },
       });
+      console.log(`URL: ${result?.cdnUrl}`);
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/products`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            img: result?.cdnUrl,
+            ...inputs,
+            options,
+          }),
+        }
+      );
 
       const data = await res.json();
       router.push(`/product/${data.id}`);
