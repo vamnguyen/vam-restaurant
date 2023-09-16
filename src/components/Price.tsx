@@ -16,12 +16,13 @@ const Price = ({ product }: { product: ProductType }) => {
   }, []);
 
   useEffect(() => {
-    console.log(product.price);
     if (product.options?.length) {
       setTotal(
         quantity *
           (parseInt(product.price as unknown as string) +
-            product.options[selected]?.additionalPrice)
+            parseInt(
+              product.options[selected]?.additionalPrice as unknown as string
+            ))
       );
     }
   }, [product, quantity, selected]);
