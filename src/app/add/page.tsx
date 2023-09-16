@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { uploadFile } from "@uploadcare/upload-client";
+import { toast } from "react-toastify";
 
 type Inputs = {
   title: string;
@@ -43,8 +44,9 @@ const AddProductPage = () => {
     return <p>Loading...</p>;
   }
 
-  if (status === "unauthenticated" || !session?.user.isAdmin) {
-    router.push("/");
+  if (status === "unauthenticated" || !session) {
+    toast.warning("You are not login!");
+    router.push("/login");
   }
 
   const handleChange = (
@@ -139,7 +141,10 @@ const AddProductPage = () => {
 
   return (
     <div className="p-4 lg:px-20 xl:px-40   flex items-center justify-center text-red-500">
-      <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-wrap gap-6 pl-9 pr-1 min-[375px]:p-0"
+      >
         <h1 className="text-4xl mb-2 text-gray-300 font-bold">
           Add New Product
         </h1>

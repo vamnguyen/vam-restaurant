@@ -1,28 +1,28 @@
 "use client";
 import { useCartStore } from "@/utils/store";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const CartIcon = () => {
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
   const { totalItems } = useCartStore();
 
   useEffect(() => {
     useCartStore.persist.rehydrate();
   }, []);
 
-  const userIsAdmin = () => {
-    return session?.user.isAdmin ? "/add" : "";
-  };
+  // const userIsAdmin = () => {
+  //   return session?.user.isAdmin ? "/add" : "";
+  // };
 
-  const userNotification = () => {
-    if (!session?.user.isAdmin) {
-      toast.warning("You are not allowed! Only Admin has added new product.");
-    }
-  };
+  // const userNotification = () => {
+  //   if (!session?.user.isAdmin) {
+  //     toast.warning("You are not allowed! Only Admin has added new product.");
+  //   }
+  // };
 
   return (
     <div className="flex flex-col gap-4 md:gap-2 md:flex-row">
@@ -38,10 +38,10 @@ const CartIcon = () => {
         </div>
         <span>Cart ({totalItems})</span>
       </Link>
-      <Link href={userIsAdmin()}>
+      <Link href={"/add"}>
         <button
           className="p-1 bg-red-500 text-white rounded-md"
-          onClick={userNotification}
+          // onClick={userNotification}
         >
           Add product
         </button>
