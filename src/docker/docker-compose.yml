@@ -1,3 +1,8 @@
+# FILEPATH: d:\full-stack-restaurant\src\docker\docker-compose.yml
+
+# This docker-compose file defines a service named "db" that uses the official Postgres image.
+# The service is configured to restart always and exposes port 5432 for external access.
+# The environment variables POSTGRES_USER, POSTGRES_PASSWORD, and POSTGRES_DB are set to myuser, mypassword, and mydb respectively.
 services:
   db:
     image: postgres
