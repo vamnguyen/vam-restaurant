@@ -14,7 +14,3 @@ export const GET = async () => {
     );
   }
 };
-
-export const POST = () => {
-  return new NextResponse("Hello method POST", { status: 200 });
-};
