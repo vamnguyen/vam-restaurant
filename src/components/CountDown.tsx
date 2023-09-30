@@ -1,9 +1,10 @@
 // WITH A LIBRARY
 "use client";
+import dynamic from "next/dynamic";
 import React from "react";
 import Countdown from "react-countdown";
 
-const endingDate = new Date("2023-09-23");
+const endingDate = new Date("2024-01-22");
 
 const CountDown = () => {
   return (
@@ -14,7 +15,7 @@ const CountDown = () => {
   );
 };
 
-export default CountDown;
+export default dynamic(() => Promise.resolve(CountDown), { ssr: false });
 
 // // WITHOUT A LIBRARY
 // "use client";
