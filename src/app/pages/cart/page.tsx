@@ -16,7 +16,7 @@ const CartPage = () => {
 
   const handleCheckout = async () => {
     if (!session) {
-      router.push("/login");
+      router.push("/pages/login");
     } else {
       try {
         const res = await fetch(
@@ -35,7 +35,7 @@ const CartPage = () => {
 
         const data = await res.json();
 
-        router.push(`/pay/${data.id}`);
+        router.push(`/pages/pay/${data.id}`);
       } catch (error) {
         console.log(error);
       }

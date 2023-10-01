@@ -20,7 +20,7 @@ const SuccessPage = () => {
           }
         );
 
-        router.push("/orders");
+        router.push("/pages/orders");
       } catch (error) {
         console.log(error);
       }

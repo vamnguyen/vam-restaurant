@@ -1,21 +1,49 @@
-import { ProductType } from "@/types/types";
+// import { ProductType } from "@/types/types";
+// import Image from "next/image";
+// import React from "react";
+// import { useRouter } from "next/navigation";
+
+// const getData = async () => {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
+//     cache: "no-store",
+//   });
+
+//   if (!res.ok) {
+//     throw new Error("Fetch data Featured products failed :( !!!");
+//   }
+
+//   return res.json();
+// };
+
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import React from "react";
+import { ProductType } from "@/types/types";
 
-const getData = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-    cache: "no-store",
-  });
+const Featured = () => {
+  const [featuredProducts, setFeaturedProducts] = useState<ProductType[]>([]);
+  const router = useRouter();
 
-  if (!res.ok) {
-    throw new Error("Fetch data Featured products failed :( !!!");
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/products`,
+        {
+          cache: "no-store",
+        }
+      );
 
-  return res.json();
-};
+      if (!res.ok) {
+        throw new Error("Fetch data Featured products failed :( !!!");
+      }
 
-const Featured = async () => {
-  const featuredProducts: ProductType[] = await getData();
+      const data = await res.json();
+      setFeaturedProducts(data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="w-screen overflow-x-scroll text-red-500">
@@ -40,7 +68,12 @@ const Featured = async () => {
               </h1>
               <p className="p-4 2xl:p-8">{item.desc}</p>
               <span className="text-xl font-bold">${item.price}</span>
-              <button className="bg-red-500 text-white p-2 rounded-md">
+              <button
+                className="bg-red-500 text-white p-2 rounded-md"
+                onClick={() => {
+                  router.push(`/pages/product/${item.id}`);
+                }}
+              >
                 Add to Cart
               </button>
             </div>

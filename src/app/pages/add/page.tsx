@@ -46,7 +46,7 @@ const AddProductPage = () => {
 
   if (status === "unauthenticated" || !session) {
     toast.warning("You are not login!");
-    router.push("/login");
+    router.push("/pages/login");
   }
 
   const handleChange = (
@@ -110,6 +110,8 @@ const AddProductPage = () => {
     try {
       // // get the image url  uploaded on cloudinary
       // const url = await upload();
+
+      // upload image to UploadCare
       const result = await uploadFile(file!, {
         publicKey: "376b05d734140722ee84",
         store: "auto",
@@ -133,7 +135,7 @@ const AddProductPage = () => {
       );
 
       const data = await res.json();
-      router.push(`/product/${data.id}`);
+      router.push(`/pages/product/${data.id}`);
     } catch (error) {
       console.log(error);
     }

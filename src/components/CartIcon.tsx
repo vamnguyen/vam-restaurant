@@ -26,7 +26,7 @@ const CartIcon = () => {
 
   return (
     <div className="flex flex-col gap-4 md:gap-2 md:flex-row">
-      <Link href={"/cart"} className="flex items-center gap-2">
+      <Link href={"/pages/cart"} className="flex items-center gap-2">
         <div className="relative w-8 h-8">
           <Image
             src={"/cart.png"}
@@ -38,7 +38,7 @@ const CartIcon = () => {
         </div>
         <span>Cart ({totalItems})</span>
       </Link>
-      <Link href={"/add"}>
+      <Link href={"/pages/add"}>
         <button
           className="p-1 bg-red-500 text-white rounded-md"
           // onClick={userNotification}

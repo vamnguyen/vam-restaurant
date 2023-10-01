@@ -8,7 +8,7 @@ import { signOut, useSession } from "next-auth/react";
 
 const links = [
   { id: 1, title: "Homepage", url: "/" },
-  { id: 2, title: "Menu", url: "/menu" },
+  { id: 2, title: "Menu", url: "/pages/menu" },
   { id: 3, title: "Working Hours", url: "/" },
   { id: 4, title: "Contact", url: "/" },
 ];
@@ -38,7 +38,7 @@ const Menu = () => {
           ))}
 
           <Link
-            href={status === "authenticated" ? "/orders" : "/login"}
+            href={status === "authenticated" ? "/pages/orders" : "/pages/login"}
             onClick={() => setOpen(false)}
           >
             {status === "authenticated" ? "Orders" : "Login"}
@@ -50,7 +50,7 @@ const Menu = () => {
             </span>
           )}
 
-          <Link href="/cart" onClick={() => setOpen(false)}>
+          <Link href="/pages/cart" onClick={() => setOpen(false)}>
             <CartIcon />
           </Link>
         </div>
