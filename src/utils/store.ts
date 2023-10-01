@@ -23,16 +23,15 @@ export const useCartStore = create(
 
         if (productInState) {
           // Update the existing product in the cart
-          const updatedProducts = products.map(
-            (product) =>
-              product.id === productInState.id &&
-              product.optionTitle === productInState.optionTitle
-                ? {
-                    ...item,
-                    quantity: item.quantity + product.quantity,
-                    price: item.price + product.price,
-                  }
-                : product // item or product ???
+          const updatedProducts = products.map((product) =>
+            product.id === productInState.id &&
+            product.optionTitle === productInState.optionTitle
+              ? {
+                  ...item,
+                  quantity: item.quantity + product.quantity,
+                  price: item.price + product.price,
+                }
+              : product
           );
           set((state) => ({
             products: updatedProducts,
