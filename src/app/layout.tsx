@@ -8,6 +8,7 @@ import AuthProvider from "@/components/AuthProvider";
 import QueryProvider from "@/components/QueryProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MessengerChatPlugin from "@/utils/MessengerChatPlugin";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,6 +57,8 @@ export default function RootLayout({
             </div>
           </QueryProvider>
         </AuthProvider>
+        {/* Messenger Chat Plugin */}
+        <MessengerChatPlugin></MessengerChatPlugin>
       </body>
     </html>
   );
