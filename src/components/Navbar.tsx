@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="hidden md:flex gap-4 flex-1 font-semibold">
         <Link href="/">Homepage</Link>
         <Link href="/pages/menu">Menu</Link>
-        <Link href="/">Contact</Link>
+        <Link href="/pages/contact">Contact</Link>
       </div>
 
       {/* LOGO */}
@@ -27,10 +27,10 @@ const Navbar = () => {
 
       {/* RIGHT LINKS */}
       <div className="hidden md:flex gap-6 items-center justify-end flex-1 font-semibold">
-        <div className="md:absolute lg:w-[140px] top-3 r-2 lg:static flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md">
+        {/* <div className="md:absolute lg:w-[140px] top-3 r-2 lg:static flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md">
           <Image src="/phone.png" alt="" width={20} height={20} />
           <span>0397 923 904</span>
-        </div>
+        </div> */}
         <UserLinks />
         <CartIcon />
       </div>

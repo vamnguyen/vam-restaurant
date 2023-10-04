@@ -10,7 +10,7 @@ const links = [
   { id: 1, title: "Homepage", url: "/" },
   { id: 2, title: "Menu", url: "/pages/menu" },
   { id: 3, title: "Working Hours", url: "/" },
-  { id: 4, title: "Contact", url: "/" },
+  { id: 4, title: "Contact", url: "/pages/contact" },
 ];
 
 const Menu = () => {

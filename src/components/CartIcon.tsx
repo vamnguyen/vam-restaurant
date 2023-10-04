@@ -40,7 +40,7 @@ const CartIcon = () => {
       </Link>
       <Link href={"/pages/add"}>
         <button
-          className="p-1 bg-red-500 text-white rounded-md"
+          className="p-2 bg-red-500 text-white rounded-md"
           // onClick={userNotification}
         >
           Add product
