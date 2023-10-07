@@ -1,20 +1,3 @@
-// import { ProductType } from "@/types/types";
-// import Image from "next/image";
-// import React from "react";
-// import { useRouter } from "next/navigation";
-
-// const getData = async () => {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-//     cache: "no-store",
-//   });
-
-//   if (!res.ok) {
-//     throw new Error("Fetch data Featured products failed :( !!!");
-//   }
-
-//   return res.json();
-// };
-
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -30,7 +13,7 @@ const Featured = () => {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/products`,
         {
-          cache: "no-store",
+          cache: "force-cache",
         }
       );
 

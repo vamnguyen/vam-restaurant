@@ -7,7 +7,7 @@ const getData = async (category: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/products?cat=${category}`,
     {
-      cache: "no-store",
+      cache: "force-cache",
     }
   );
 

@@ -3,20 +3,7 @@ import { MenuType } from "@/types/types";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-// const getData = async () => {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, {
-//     cache: "no-store",
-//   });
-
-//   if (!res.ok) {
-//     throw new Error("Fetch Categories data failed :( !!!");
-//   }
-
-//   return res.json();
-// };
-
 const MenuPage = () => {
-  // const menu: MenuType = await getData();
   const [menu, setMenu] = useState<MenuType>([]);
 
   useEffect(() => {
@@ -24,7 +11,7 @@ const MenuPage = () => {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/categories`,
         {
-          cache: "no-store",
+          cache: "force-cache",
         }
       );
 
