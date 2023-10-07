@@ -120,7 +120,7 @@ const CheckoutForm = () => {
                   fill="currentFill"
                 />
               </svg>
-              <span className="sr-only">Loading...</span>
+              <span className="sr-only">Loading... please wait</span>
             </div>
           ) : (
             "Pay now"

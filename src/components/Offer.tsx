@@ -32,6 +32,7 @@ const Offer = () => {
           src="/offerProduct.png"
           alt="Offer-Product"
           fill
+          sizes="100%"
           className="object-contain"
         />
       </div>

@@ -54,6 +54,7 @@ const Slider = () => {
           src={data[currentSlide]?.image}
           alt="slider"
           fill
+          sizes="100%"
           className="object-cover"
         />
       </div>

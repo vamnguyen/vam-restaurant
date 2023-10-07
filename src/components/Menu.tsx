@@ -30,7 +30,7 @@ const Menu = () => {
         className="cursor-pointer"
       />
       {open && (
-        <div className="bg-red-500 text-white absolute left-0 top-24 w-full flex flex-col gap-8 items-center justify-center text-xl z-10 px-2 py-3">
+        <div className="bg-red-500 text-white absolute left-0 top-24 w-full flex flex-col gap-5 items-center justify-center text-xl z-10 px-2 py-3">
           {links.map((item) => (
             <Link key={item.id} href={item.url} onClick={() => setOpen(false)}>
               {item.title}

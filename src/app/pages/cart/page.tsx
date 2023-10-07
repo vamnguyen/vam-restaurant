@@ -53,7 +53,13 @@ const CartPage = () => {
         {products.map((item) => (
           <div className="flex items-center justify-between mb-4" key={item.id}>
             {item.img && (
-              <Image src={item.img} alt="" width={100} height={100} />
+              <Image
+                src={item.img}
+                alt="product"
+                width={100}
+                height={100}
+                className="w-auto h-auto"
+              />
             )}
             <div className="">
               <h1 className="uppercase text-xl font-bold">{item.title}</h1>
@@ -112,7 +118,7 @@ const CartPage = () => {
                   fill="currentFill"
                 />
               </svg>
-              <span className="sr-only">Loading...</span>
+              <span className="sr-only">Loading... please wait</span>
             </div>
           ) : (
             "CHECKOUT"

@@ -10,7 +10,7 @@ const DeleteButton = ({ id }: { id: string }) => {
   const router = useRouter();
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return <p>Loading... please wait</p>;
   }
 
   if (status === "unauthenticated" || !session?.user.isAdmin) {

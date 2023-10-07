@@ -61,7 +61,7 @@ const OrdersPage = () => {
     toast.success("The order status has been changed!");
   };
 
-  if (isLoading || status === "loading") return "Loading...";
+  if (isLoading || status === "loading") return "Loading... please wait";
   if (error) return "An error has occurred: " + error;
 
   return (

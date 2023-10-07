@@ -42,7 +42,7 @@ const AddProductPage = () => {
   const router = useRouter();
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return <p>Loading... please wait</p>;
   }
 
   if (status === "unauthenticated" || !session) {
@@ -283,7 +283,7 @@ const AddProductPage = () => {
                     fill="currentFill"
                   />
                 </svg>
-                <span className="sr-only">Loading...</span>
+                <span className="sr-only">Loading... please wait</span>
               </div>
             ) : (
               "Submit"

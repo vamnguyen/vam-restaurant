@@ -30,7 +30,7 @@ const CartIcon = () => {
         <div className="relative w-8 h-8">
           <Image
             src={"/cart.png"}
-            alt=""
+            alt="cart"
             fill
             sizes="100%"
             className="object-contain"
