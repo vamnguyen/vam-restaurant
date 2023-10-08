@@ -15,7 +15,7 @@ const Navbar = () => {
       </div>
 
       {/* LOGO */}
-      <div className="text-2xl font-extrabold flex-1 md:text-center">
+      <div className="text-2xl font-extrabold  md:text-center">
         <Link href={"/"}>VAM Restaurant</Link>
       </div>
 

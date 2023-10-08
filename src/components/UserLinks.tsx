@@ -1,19 +1,27 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 
 const UserLinks = () => {
   const { status, data } = useSession();
-
   return (
-    <div>
-      {/* {data?.user.name! && (
-        <div>
-          <Image src={data?.user.image!} alt="avatar" />
-        </div>
-      )} */}
+    <div className="flex justify-between items-center gap-2">
+      {status === "loading" ? (
+        <div>loading...</div>
+      ) : (
+        data?.user?.image && (
+          <Image
+            src={data?.user?.image}
+            alt="avatar"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+        )
+      )}
+
       {status === "authenticated" ? (
         <div>
           <Link href="/pages/orders">Orders</Link>
@@ -22,7 +30,7 @@ const UserLinks = () => {
           </span>
         </div>
       ) : (
-        <Link href="/pages/login">Login</Link>
+        status !== "loading" && <Link href="/pages/login">Login</Link>
       )}
     </div>
   );
